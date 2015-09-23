@@ -1,6 +1,5 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -13,14 +12,32 @@ public class Trigger {
 			while (true) {
 				Socket clientSocket = server.accept();
 				BufferedReader in = new BufferedReader (new InputStreamReader (clientSocket.getInputStream ()));
-				PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
-
-			    String incommingText = "";
+		    	StringBuilder xml = new StringBuilder();
 			    try
-			    {
-			        incommingText = in.readLine ();
-			        System.out.println(incommingText);
-			    } catch(Exception e) {}
+			    {	
+			    	int t = 0;
+			    	String line;
+			    	Boolean recording = false;
+			    	while ((line = in.readLine()) != null) {
+			    		if(line.contains("<?xml version=\"1.0\"?>")) {
+			    			recording = true;
+			    		}
+			    		
+			    		if(recording) {
+			    			xml.append(line);
+			    		}
+			    		
+			    		if(line.contains("</WEATHERDATA>")) {
+			    			recording = false;
+			    			String xmlString = xml.toString();
+			    			xml.setLength(0);
+			    		}
+			    	}
+			    	String xmlData = xml.toString();
+			    	System.out.println(xmlData);
+			    } catch(Exception e) {
+			    	System.out.println(e.getMessage());
+			    }
 			}
 		} catch(Exception e) {
 			System.out.println(e.getMessage());
