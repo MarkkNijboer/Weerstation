@@ -9,11 +9,10 @@ public class Trigger {
 			
 			while (true) {
 				Socket clientSocket = server.accept();
-				(new XMLparser(clientSocket)).start();
+				(new ClientConnection(clientSocket)).start();
 			}
 		} catch(Exception e) {
 			System.out.println(e.getMessage());
 		}
-
 	}
 }
