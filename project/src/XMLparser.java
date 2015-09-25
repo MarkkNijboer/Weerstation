@@ -34,9 +34,10 @@ public class XMLparser extends Thread {
 				NodeList data = doc.getElementsByTagName("MEASUREMENT");
 				
 				StringBuilder mb = new StringBuilder();
-				/* "INSERT INTO `database` (`STN`, `DATE`, `TIME`, `DEWP`, `STP`, `TEMP`, `SLP`, `VISIB`, `WDSP`, `PRCP`, `SNDP`, `SNDP`, `FRSHTT`, `NDDIR`, `CLDC`, `WNDDIR`) VALUES " */
 				
-				for (int i = 0; i < data.getLength(); i++) {
+				int length = data.getLength();
+				
+				for (int i = 0; i < length; i++) {
 			        Element measurement = (Element) data.item(i);
 			        
 			        HashMap<String, String> measurementData = new HashMap<String, String>();
@@ -53,47 +54,44 @@ public class XMLparser extends Thread {
 			        measurementData.put("PRCP", measurement.getElementsByTagName("PRCP").item(0).getTextContent());
 			        measurementData.put("SNDP", measurement.getElementsByTagName("SNDP").item(0).getTextContent());
 			        measurementData.put("FRSHTT", measurement.getElementsByTagName("FRSHTT").item(0).getTextContent());
-			        measurementData.put("WNDDIR", measurement.getElementsByTagName("WNDDIR").item(0).getTextContent());
 			        measurementData.put("CLDC", measurement.getElementsByTagName("CLDC").item(0).getTextContent());
 			        measurementData.put("WNDDIR", measurement.getElementsByTagName("WNDDIR").item(0).getTextContent());
 			        
 			        StringBuilder sb = new StringBuilder();
-			        sb.append("\n('");
+			        sb.append("\n(");
 			        sb.append(measurementData.get("STN"));
-			        sb.append("', '");
+			        sb.append(", '");
 			        sb.append(measurementData.get("DATE"));
 			        sb.append("', '");
 			        sb.append(measurementData.get("TIME"));
-			        sb.append("', '");
+			        sb.append("', ");
 			        sb.append(measurementData.get("DEWP"));
-			        sb.append("', '");
+			        sb.append(", ");
 			        sb.append(measurementData.get("STP"));
-			        sb.append("', '");
+			        sb.append(", ");
 			        sb.append(measurementData.get("TEMP"));
-			        sb.append("', '");
+			        sb.append(", ");
 			        sb.append(measurementData.get("SLP"));
-			        sb.append("', '");
+			        sb.append(", ");
 			        sb.append(measurementData.get("VISIB"));
-			        sb.append("', '");
+			        sb.append(", ");
 			        sb.append(measurementData.get("WDSP"));
-			        sb.append("', '");
+			        sb.append(", ");
 			        sb.append(measurementData.get("PRCP"));
-			        sb.append("', '");
+			        sb.append(", ");
 			        sb.append(measurementData.get("SNDP"));
-			        sb.append("', '");
+			        sb.append(", '");
 			        sb.append(measurementData.get("FRSHHT"));
-			        sb.append("', '");
-			        sb.append(measurementData.get("NDDIR"));
-			        sb.append("', '");
+			        sb.append("', ");
 			        sb.append(measurementData.get("CLDC"));
-			        sb.append("', '");
+			        sb.append(", ");
 			        sb.append(measurementData.get("WNDDIR"));
-			        sb.append("'),");
+			        sb.append("),");
 			        
 			        mb.append(sb);
 			    }
 				
-				DatabaseQueue.addToQueue(mb);
+				DatabaseQueue.addToQueue(mb, length);
 				
 				
 				
