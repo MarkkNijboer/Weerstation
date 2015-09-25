@@ -4,8 +4,6 @@
  * 
  * 
  * @author Mark Nijboer
- * @author Rick van der Poel
- * @author Kevin Haitsema
  * @version 25.9.2015
  * 
  */
