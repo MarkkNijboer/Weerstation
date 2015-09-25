@@ -33,6 +33,9 @@ public class XMLparser extends Thread {
 				Document doc = db.parse(is);
 				NodeList data = doc.getElementsByTagName("MEASUREMENT");
 				
+				StringBuilder mb = new StringBuilder();
+				/* "INSERT INTO `database` (`STN`, `DATE`, `TIME`, `DEWP`, `STP`, `TEMP`, `SLP`, `VISIB`, `WDSP`, `PRCP`, `SNDP`, `SNDP`, `FRSHTT`, `NDDIR`, `CLDC`, `WNDDIR`) VALUES " */
+				
 				for (int i = 0; i < data.getLength(); i++) {
 			        Element measurement = (Element) data.item(i);
 			        
@@ -54,7 +57,8 @@ public class XMLparser extends Thread {
 			        measurementData.put("CLDC", measurement.getElementsByTagName("CLDC").item(0).getTextContent());
 			        measurementData.put("WNDDIR", measurement.getElementsByTagName("WNDDIR").item(0).getTextContent());
 			        
-			        StringBuilder sb = new StringBuilder("INSERT INTO `database` (`STN`, `DATE`, `TIME`, `DEWP`, `STP`, `TEMP`, `SLP`, `VISIB`, `WDSP`, `PRCP`, `SNDP`, `SNDP`, `FRSHTT`, `NDDIR`, `CLDC`, `WNDDIR`) VALUES '");
+			        StringBuilder sb = new StringBuilder();
+			        sb.append("\n('");
 			        sb.append(measurementData.get("STN"));
 			        sb.append("', '");
 			        sb.append(measurementData.get("DATE"));
@@ -84,13 +88,12 @@ public class XMLparser extends Thread {
 			        sb.append(measurementData.get("CLDC"));
 			        sb.append("', '");
 			        sb.append(measurementData.get("WNDDIR"));
-			        sb.append("';");
+			        sb.append("'),");
 			        
-			        String query = sb.toString();
-			        
-			        System.out.println(query);
-			        
+			        mb.append(sb);
 			    }
+				
+				DatabaseQueue.addToQueue(mb);
 				
 				
 				
