@@ -85,7 +85,7 @@ public class XMLparser extends Thread {
 			        sb.append(", ");
 			        sb.append(measurementData.get("SNDP"));
 			        sb.append(", '");
-			        sb.append(measurementData.get("FRSHHT"));
+			        sb.append(measurementData.get("FRSHTT"));
 			        sb.append("', ");
 			        sb.append(measurementData.get("CLDC"));
 			        sb.append(", ");

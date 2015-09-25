@@ -9,9 +9,8 @@ public class CorrectData {
 	private static HashMap<String, ArrayList<HashMap<String, String>>> dataStorage = new HashMap<String, ArrayList<HashMap<String, String>>>();
 	private static final int MAX_COUNTER = 30;
 	
-	public static void init() {
-		
-	}
+	
+	
 	
 	public static synchronized HashMap<String, String> correct(HashMap<String, String> data) {
 		
@@ -38,8 +37,33 @@ public class CorrectData {
 			if(list.size() == MAX_COUNTER) {
 				
 				for(String key : missingValue) {
-					data.put(key, "0.0");
+					
+					int count = 0;
+					double total = 0;
+					
+					for(HashMap<String, String> map : list) {
+						total = total + Double.parseDouble(map.get(key));
+						count++;
+					}
+					
+					Double value = (double) Math.round((total / count) * 10) / 10;
+					
+					data.put(key, value.toString());
 				}
+				
+				double totalTemp = 0;
+				int countTemp = 0;
+				for(HashMap<String, String> map : list) {
+					totalTemp = totalTemp + Double.parseDouble(map.get("TEMP"));
+					countTemp++;
+				}
+				Double value = (double) Math.round((totalTemp / countTemp) * 10) / 10;
+				Double margin = value * 0.20;
+				
+				if(Double.parseDouble(data.get("TEMP")) > value + margin || Double.parseDouble(data.get("TEMP")) < value - margin) {
+					data.put("TEMP", value.toString());
+				}
+				
 				
 				list.add(data);
 				list.remove(0);
@@ -47,7 +71,31 @@ public class CorrectData {
 			} else {
 				
 				for(String key : missingValue) {
-					data.put(key, "0.0");
+					
+					int count = 0;
+					double total = 0;
+					
+					for(HashMap<String, String> map : list) {
+						total = total + Double.parseDouble(map.get(key));
+						count++;
+					}
+					
+					Double value = (double) Math.round((total / count) * 10) / 10;
+					
+					data.put(key, value.toString());
+				}
+				
+				double totalTemp = 0;
+				int countTemp = 0;
+				for(HashMap<String, String> map : list) {
+					totalTemp = totalTemp + Double.parseDouble(map.get("TEMP"));
+					countTemp++;
+				}
+				Double value = (double) Math.round((totalTemp / countTemp) * 10) / 10;
+				Double margin = value * 0.20;
+				
+				if(Double.parseDouble(data.get("TEMP")) > value + margin || Double.parseDouble(data.get("TEMP")) < value - margin) {
+					data.put("TEMP", value.toString());
 				}
 				
 				list.add(data);
