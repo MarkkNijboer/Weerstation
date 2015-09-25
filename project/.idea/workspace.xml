@@ -42,11 +42,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="XMLparser.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="XMLparser.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/XMLparser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.23743017">
-              <caret line="42" column="92" selection-start-line="42" selection-start-column="92" selection-end-line="42" selection-end-column="92" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="40" column="65" selection-start-line="40" selection-start-column="20" selection-end-line="40" selection-end-column="65" />
               <folding>
                 <element signature="e#1081#1097#0" expanded="true" />
               </folding>
@@ -54,7 +54,28 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="CorrectData.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/CorrectData.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.47486034">
+              <caret line="20" column="22" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#239#240#0" expanded="true" />
+                <element signature="e#269#270#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
@@ -65,6 +86,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/XMLparser.java" />
+        <option value="$PROJECT_DIR$/src/CorrectData.java" />
       </list>
     </option>
   </component>
@@ -449,10 +471,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/XMLparser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23743017">
-          <caret line="42" column="92" selection-start-line="42" selection-start-column="92" selection-end-line="42" selection-end-column="92" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="40" column="65" selection-start-line="40" selection-start-column="20" selection-end-line="40" selection-end-column="65" />
           <folding>
             <element signature="e#1081#1097#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CorrectData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.47486034">
+          <caret line="20" column="22" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#239#240#0" expanded="true" />
+            <element signature="e#269#270#0" expanded="true" />
           </folding>
         </state>
       </provider>
