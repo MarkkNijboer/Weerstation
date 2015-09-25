@@ -1,3 +1,15 @@
+/**
+ * 
+ * Klasse om de data te extraheren uit de xml
+ * 
+ * 
+ * @author Mark Nijboer
+ * @author Rick van der Poel
+ * @author Kevin Haitsema
+ * @version 25.9.2015
+ * 
+ */
+
 package weerstation;
 
 import java.io.IOException;
@@ -20,10 +32,19 @@ public class XMLparser extends Thread {
 	
 	private String xml;
 	
+	/**
+	 * Methode om de xml-gegevens op te slaan binnen de instantie
+	 * 
+	 * @param xml	Een string die een volledig xml bestand bevat
+	 */
 	public XMLparser(String xml) {
 		this.xml = xml;
 	}
 	
+	
+	/**
+	 * Methode om de xml gegevens uit te lezen en door te sturen naar de database queue.
+	 */
 	public void run() {
 		DocumentBuilder db;
 		try {

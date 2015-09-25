@@ -1,3 +1,15 @@
+/**
+ * 
+ * Klasse om gegevens te bufferen en in de database te zetten.
+ * 
+ * 
+ * @author Mark Nijboer
+ * @author Rick van der Poel
+ * @author Kevin Haitsema
+ * @version 25.9.2015
+ * 
+ */
+
 package weerstation;
 
 import java.io.PrintWriter;
@@ -12,6 +24,12 @@ public class DatabaseQueue {
 	private static int count = 0;
 	private static boolean locked;
 	
+	/**
+	 * Methode om een deel van een query te bufferen en de hoeveelheid queries bij te houden.
+	 * 
+	 * @param subQuery			Een deel van de query die 10 inserts bevat
+	 * @param incommingCount	Het aantal inserts in het deel van de query
+	 */
 	public static synchronized void addToQueue(StringBuilder subQuery, int incommingCount) {
 		if(!locked) {
 			if(buffer.length() != 0) {
@@ -31,6 +49,9 @@ public class DatabaseQueue {
 		return;
 	}
 	
+	/**
+	 * Methode om de echte query uit de buffer te halen en klaar te zetten.
+	 */
 	public static synchronized void getQueue() {
 		
 		locked = true;
@@ -53,6 +74,11 @@ public class DatabaseQueue {
 		}
 	}
 	
+	/**
+	 * Methode om connectie te maken met de MySQL database en de query met ongeveer 8000 inserts uit te voeren.
+	 * 
+	 * @param theQuery		De complete query die uitgevoerd moet worden op de database
+	 */
 	private static void executeQuery(String theQuery) {
 		try {
 			String host = "jdbc:mysql://localhost:3306/weerstation";

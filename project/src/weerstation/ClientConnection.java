@@ -1,3 +1,15 @@
+/**
+ * 
+ * Klasse om clientconnectie af te handelen
+ * 
+ * 
+ * @author Mark Nijboer
+ * @author Rick van der Poel
+ * @author Kevin Haitsema
+ * @version 25.9.2015
+ * 
+ */
+
 package weerstation;
 
 import java.io.BufferedReader;
@@ -8,10 +20,22 @@ import java.net.Socket;
 public class ClientConnection extends Thread{
 	private Socket clientSocket;
 	
+	
+	/**
+	 * Constructor. Dit wordt gebruikt om de clientSocket op te slaan in de instantie.
+	 * 
+	 * @param clientSocket		De clientSocket
+	 */
 	public ClientConnection(Socket clientSocket) {
 		this.clientSocket = clientSocket;
 	}
 	
+	
+	/**
+	 * 
+	 * Methode om de connectie van de client af te handelen. De inkomende berichtenstroom wordt opgedeeld in volledige xml bestanden en doorgestuurd naar een apparte thread.
+	 * 
+	 */
 	public void run() {
 		try {
 			BufferedReader in = new BufferedReader (new InputStreamReader (clientSocket.getInputStream ()));
