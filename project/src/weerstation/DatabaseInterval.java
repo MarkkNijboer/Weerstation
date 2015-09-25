@@ -1,3 +1,4 @@
+package weerstation;
 
 public class DatabaseInterval extends Thread {
 	public void run() {

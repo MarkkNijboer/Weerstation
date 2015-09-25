@@ -1,3 +1,5 @@
+package weerstation;
+
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.HashMap;
@@ -56,6 +58,8 @@ public class XMLparser extends Thread {
 			        measurementData.put("FRSHTT", measurement.getElementsByTagName("FRSHTT").item(0).getTextContent());
 			        measurementData.put("CLDC", measurement.getElementsByTagName("CLDC").item(0).getTextContent());
 			        measurementData.put("WNDDIR", measurement.getElementsByTagName("WNDDIR").item(0).getTextContent());
+			        
+			        measurementData = CorrectData.correct(measurementData);
 			        
 			        StringBuilder sb = new StringBuilder();
 			        sb.append("\n(");

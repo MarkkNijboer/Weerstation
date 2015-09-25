@@ -1,8 +1,10 @@
+package weerstation;
+
 import java.net.ServerSocket;
 import java.net.Socket;
 
 
-public class Trigger {
+public class Main {
 	public static void main(String[] args) {
 		try {
 			
