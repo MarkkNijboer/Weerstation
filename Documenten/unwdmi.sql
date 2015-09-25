@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 25 sep 2015 om 10:44
+-- Gegenereerd op: 25 sep 2015 om 11:11
 -- Serverversie: 5.6.24
 -- PHP-versie: 5.6.8
 
@@ -33,13 +33,14 @@ CREATE TABLE IF NOT EXISTS `measurements` (
   `time` time NOT NULL,
   `dewp` double NOT NULL,
   `stp` double NOT NULL,
+  `temp` double NOT NULL,
   `slp` double NOT NULL,
   `visib` double NOT NULL,
   `wdsp` double NOT NULL,
   `prcp` double NOT NULL,
   `sndp` double NOT NULL,
   `frshtt` varchar(45) NOT NULL,
-  `ddc` double NOT NULL,
+  `cldc` double NOT NULL,
   `wnddir` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
