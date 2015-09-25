@@ -5,7 +5,10 @@ import java.net.Socket;
 public class Trigger {
 	public static void main(String[] args) {
 		try {
+			
 			ServerSocket server = new ServerSocket(7789);
+			
+			(new DatabaseInterval()).start();
 			
 			while (true) {
 				Socket clientSocket = server.accept();
