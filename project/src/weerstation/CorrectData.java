@@ -1,3 +1,13 @@
+/**
+ * 
+ * Klasse om de gegevens te corrigeren
+ * 
+ * 
+ * @author Mark Nijboer
+ * @version 25.9.2015
+ * 
+ */
+
 package weerstation;
 
 import java.util.ArrayList;
@@ -11,7 +21,13 @@ public class CorrectData {
 	
 	
 	
-	
+	/**
+	 * 
+	 * Deze methode zorgt voor de correctie van de data. Sommige data is niet volledig en soms foutief. Dat probleem wordt hierin aangepakt.
+	 * 
+	 * @param data		De data in de vorm van een HashMap met soms foutieve of lege waarden
+	 * @return data		De gecorrigeerde data
+	 */
 	public static synchronized HashMap<String, String> correct(HashMap<String, String> data) {
 		
 		String stationnr = "0";
