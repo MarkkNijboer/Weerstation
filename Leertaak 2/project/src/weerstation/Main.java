@@ -13,6 +13,12 @@ package weerstation;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+import org.bson.Document;
+
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+
 
 public class Main {
 	
@@ -23,6 +29,12 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		
+		MongoClient mongoClient = new MongoClient("localhost");
+        MongoDatabase db = mongoClient.getDatabase("test");
+        MongoCollection<Document> collection = db.getCollection("measurements"); 
+        
+        DatabaseQueue.setCollection(collection);
 		try {
 			
 			ServerSocket server = new ServerSocket(7789);

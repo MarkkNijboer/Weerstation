@@ -117,19 +117,19 @@ public class XMLparser extends Thread {
 			        mb.append(sb);*/
 			        
 			        org.bson.Document singleRow = new org.bson.Document()
-			        .append("STN", measurementData.get("STN"))
+			        .append("STN", Integer.parseInt(measurementData.get("STN")))
 			        .append("DATE", measurementData.get("DATE"))
 			        .append("TIME", measurementData.get("TIME"))
-			        .append("DEWP", measurementData.get("DEWP"))
-			        .append("TEMP", measurementData.get("TEMP"))
-			        .append("SLP", measurementData.get("SLP"))
-			        .append("VISIB", measurementData.get("VISIB"))
-			        .append("WDSP", measurementData.get("WDSP"))
-			        .append("PRCP", measurementData.get("PRCP"))
-			        .append("SNDP", measurementData.get("SNDP"))
+			        .append("DEWP", Double.parseDouble(measurementData.get("DEWP")))
+			        .append("TEMP", Double.parseDouble(measurementData.get("TEMP")))
+			        .append("SLP", Double.parseDouble(measurementData.get("SLP")))
+			        .append("VISIB", Double.parseDouble(measurementData.get("VISIB")))
+			        .append("WDSP", Double.parseDouble(measurementData.get("WDSP")))
+			        .append("PRCP", Double.parseDouble(measurementData.get("PRCP")))
+			        .append("SNDP", Double.parseDouble(measurementData.get("SNDP")))
 			        .append("FRSHTT", measurementData.get("FRSHTT"))
-			        .append("CLDC", measurementData.get("CLDC"))
-			        .append("WNDDIR", measurementData.get("WNDDIR"));
+			        .append("CLDC", Double.parseDouble(measurementData.get("CLDC")))
+			        .append("WNDDIR", Double.parseDouble(measurementData.get("WNDDIR")));
 			        
 			        documents.add(singleRow);
 			    }

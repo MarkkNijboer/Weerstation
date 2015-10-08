@@ -23,6 +23,7 @@ import com.mongodb.client.MongoDatabase;
 public class DatabaseQueue {
 	private static List<Document> dataList = new ArrayList<Document>();
 	private static List<Document> buffer = new ArrayList<Document>();
+	private static MongoCollection<Document> collection;
 	private static int count = 0;
 	private static boolean locked;
 	
@@ -70,20 +71,16 @@ public class DatabaseQueue {
 		}
 	}
 	
+	public static void setCollection(MongoCollection<Document> collection) {
+		DatabaseQueue.collection = collection;
+	}
+	
 	/**
 	 * Methode om connectie te maken met de MySQL database en de query met ongeveer 8000 inserts uit te voeren.
 	 * 
 	 * @param theQuery		De complete query die uitgevoerd moet worden op de database
 	 */
 	private static void executeQuery(List<Document> data) {
-		
-		MongoClient mongoClient = new MongoClient("localhost");
-        MongoDatabase db = mongoClient.getDatabase("test");
-        MongoCollection<Document> collection = db.getCollection("measurements"); 
-        
         collection.insertMany(data);
-        
-        mongoClient.close();
-        
 	}
 }
