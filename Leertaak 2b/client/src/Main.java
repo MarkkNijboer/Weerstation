@@ -4,7 +4,12 @@ import java.util.HashMap;
 public class Main {
 	public static void main(String[] args) {
 		
-		File databaseFolder = new File("../DB");
+		File databaseFolder = new File("../../DB");
+		if(!databaseFolder.exists()) {
+			System.out.println(databaseFolder.getAbsolutePath());
+			System.err.println("Database folder not found");
+			System.exit(0);
+		}
 		
 		String searchQuery;
 		if(args.length == 1) {
@@ -29,8 +34,6 @@ public class Main {
 		} else {
 			if(searchQuery.contains("=")) {
 				String subQuery[] = searchQuery.split("=");
-				System.out.println(subQuery[0]);
-				System.out.println(subQuery[1]);
 				try {
 					int number = getParamNumber(subQuery[0]);
 					queryMap.put(number, subQuery[1]);
@@ -41,7 +44,6 @@ public class Main {
 		}
 		
 		DBParser.setQuery(queryMap);
-		
 		
 		int threadCount = 0;
 		for (File fileEntry : databaseFolder.listFiles()) {
